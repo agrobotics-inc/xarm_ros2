@@ -177,6 +177,7 @@ namespace uf_robot_hardware
         
         position_states_.resize(info_.joints.size(), std::numeric_limits<double>::quiet_NaN());
         velocity_states_.resize(info_.joints.size(), std::numeric_limits<double>::quiet_NaN());
+        effort_states_.resize(info_.joints.size(), std::numeric_limits<double>::quiet_NaN());
         position_cmds_.resize(info_.joints.size(), std::numeric_limits<double>::quiet_NaN());
         velocity_cmds_.resize(info_.joints.size(), std::numeric_limits<double>::quiet_NaN());
 
@@ -222,6 +223,8 @@ namespace uf_robot_hardware
                 info_.joints[i].name, hardware_interface::HW_IF_POSITION, &position_states_[i]));
             state_interfaces.emplace_back(hardware_interface::StateInterface(
                 info_.joints[i].name, hardware_interface::HW_IF_VELOCITY, &velocity_states_[i]));
+            state_interfaces.emplace_back(hardware_interface::StateInterface(
+                info_.joints[i].name, hardware_interface::HW_IF_EFFORT, &effort_states_[i]));
         }
 
         return state_interfaces;
@@ -312,11 +315,11 @@ namespace uf_robot_hardware
                 position_states_[j] = curr_read_position_[j];
 				if (use_new) {
 					velocity_states_[j] = curr_read_velocity_[j];
-					// effort_states_[j] = curr_read_effort_[j];
+					effort_states_[j] = curr_read_effort_[j];
 				}
 				else {
 					velocity_states_[j] = !initialized_ ? 0.0 : (curr_read_position_[j] - prev_read_position_[j]) / (curr_read_time_.seconds() - prev_read_time_.seconds());
-					// effort_states_[j] = 0.0;
+					effort_states_[j] = 0.0;
 				}
             }
             if (!initialized_) {
