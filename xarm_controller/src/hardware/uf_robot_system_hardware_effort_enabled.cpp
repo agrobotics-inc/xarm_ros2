@@ -6,7 +6,7 @@
            Vinman <vinman.cub@gmail.com>
  ============================================================================*/
 
-#include "centaur_controller/hardware/uf_robot_system_hardware_effort_enabled.h"
+#include "xarm_controller/hardware/uf_robot_system_hardware_effort_enabled.h"
 
 #define SERVICE_CALL_FAILED 999
 #define SERVICE_IS_PERSISTENT_BUT_INVALID 998
