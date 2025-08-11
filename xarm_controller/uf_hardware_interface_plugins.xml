@@ -13,4 +13,11 @@
       The ROS2 Control Fake HardWare Interface for UFACTORY ROBOT.
     </description>
   </class>
+  <class name="uf_robot_hardware/UFRobotSystemHardwareEffortEnabled"
+         type="uf_robot_hardware::UFRobotSystemHardwareEffortEnabled"
+         base_class_type="hardware_interface::SystemInterface">
+    <description>
+      The ROS2 Control HardWare Interface for UFACTORY ROBOT with effort state interface enabled.
+    </description>
+  </class>
 </library>

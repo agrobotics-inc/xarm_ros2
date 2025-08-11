@@ -52,6 +52,7 @@ add_library(
   SHARED
   src/hardware/uf_robot_system_hardware.cpp
   src/hardware/uf_robot_fake_system_hardware.cpp
+  src/hardware/uf_robot_system_hardware_effort_enabled.cpp
 )
 target_include_directories(
   uf_robot_hardware
