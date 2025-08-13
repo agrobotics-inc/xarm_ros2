@@ -70,7 +70,7 @@ namespace xarm_api
         {
             joint_state_msg_.position[i] = (double)report_data_ptr->angle[i];
             joint_state_msg_.velocity[i] = (double)report_data_ptr->rt_joint_spds[i];
-            joint_state_msg_.effort[i] = (double)report_data_ptr->tau[i];
+            joint_state_msg_.effort[i] = (double)report_data_ptr->currents[i];
         }
         pub_joint_state(joint_state_msg_);
 
